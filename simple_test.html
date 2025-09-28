@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test: {{ test_type }}</title>
+</head>
+<body>
+    <h1>Test for {{ test_type }}</h1>
+    <p>{{ test.question }}</p>
+    <form method="POST">
+        <input type="hidden" name="step_idx" value="{{ step_idx }}">
+        <input type="hidden" name="task_idx" value="{{ task_idx }}">
+        {% for option in test.options %}
+            <input type="radio" name="answer" value="{{ option }}"> {{ option }}<br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ test.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; background: #f7fafc; }
+        h1 { color: #2d3748; }
+        .question { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        label { display: block; margin: 5px 0; }
+        button { background: #4299e1; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #3182ce; }
+        a { color: #4299e1; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>{{ test.title }}</h1>
+    <p>Answer all questions to test your knowledge. Pass threshold: {{ test.pass_threshold }}%.</p>
+    <form method="POST">
+        <input type="hidden" name="step_idx" value="{{ step_idx }}">
+        <input type="hidden" name="task_idx" value="{{ task_idx }}">
+        {% for q in test.questions %}
+            <div class="question">
+                <strong>Q{{ loop.index }}:</strong> {{ q.q }}
+                {% for opt in q.options %}
+                    <label>
+                        <input type="radio" name="q_{{ loop.index0 }}" value="{{ opt }}" required> {{ opt }}
+                    </label>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit Test</button>
+    </form>
+    <br><a href="{{ url_for('index') }}">Back to Tracker</a>
+</body>
+</html>
