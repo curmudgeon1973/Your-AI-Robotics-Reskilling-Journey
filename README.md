@@ -109,4 +109,4 @@ Icons from Font Awesome.
 Inspired by resources like Khan Academy, Coursera, and freeCodeCamp.
 
 
-Created by [Your Name]. Feel free to open issues or suggest features on GitHub!
+Created by [Marc Ridgway]. Feel free to open issues or suggest features on GitHub!
